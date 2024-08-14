@@ -18,7 +18,6 @@ function showNextStep(inputMethod) {
   document.getElementById('manualInput').classList.add('hidden');
   document.getElementById('fileInputSection').classList.add('hidden');
   document.getElementById('step3').classList.add('hidden');
-  document.getElementById('filterSection').classList.add('hidden');
 
   if (inputMethod === 'manual') {
     document.getElementById('manualInput').classList.remove('hidden');
@@ -35,7 +34,6 @@ function handleManualInput() {
     const header = rows[0].split('\t');
     populateColumnSelect(header);
     document.getElementById('step3').classList.remove('hidden');
-    document.getElementById('filterSection').classList.remove('hidden');
   }
 }
 
@@ -50,7 +48,15 @@ function populateColumnSelect(header) {
     columnSelect.appendChild(option);
   });
   columnSelect.classList.remove('hidden');
-  document.getElementById('filterSection').classList.remove('hidden');
+}
+
+// Função para limpar a entrada manual
+function clearManualInput() {
+  document.getElementById('numberEditor').value = '';
+  document.getElementById('step3').classList.add('hidden');
+  document.getElementById('resultTable').innerHTML = '';
+  document.getElementById('resultCount').textContent = '';
+  document.getElementById('sidebarResult').style.right = '-300px';
 }
 
 // Função para processar o arquivo carregado
@@ -74,28 +80,8 @@ function handleFile(event) {
 
     document.getElementById('numberEditor').value = result.trim();
     document.getElementById('step3').classList.remove('hidden');
-    document.getElementById('filterSection').classList.remove('hidden');
   };
   reader.readAsArrayBuffer(file);
-}
-
-// Função para aplicar o filtro à coluna selecionada
-function applyFilter() {
-  const filterValue = document.getElementById('filterInput').value.toLowerCase();
-  const selectedColumn = document.getElementById('columnSelect').value;
-  const numberEditor = document.getElementById('numberEditor');
-  
-  let rows = numberEditor.value.split('\n');
-  let header = rows[0].split('\t');
-  let numberIndex = header.indexOf(selectedColumn);
-
-  let filteredRows = rows.filter((row, index) => {
-    if (index === 0) return true; // Keep the header
-    const columns = row.split('\t');
-    return columns[numberIndex].toLowerCase().includes(filterValue);
-  });
-
-  numberEditor.value = filteredRows.join('\n');
 }
 
 // Função para formatar números de telefone com base no DDI selecionado
@@ -193,6 +179,26 @@ document.getElementById('menuResultButton').addEventListener('click', function()
 document.getElementById('closeResultBtn').addEventListener('click', function() {
   document.getElementById('sidebarResult').style.right = '-300px';
 });
+
+// Função para atualizar a visibilidade dos links da barra lateral com base na página atual
+function updateSidebar() {
+  const currentPage = window.location.pathname.split('/').pop();
+
+  const formatTextLink = document.getElementById('formatTextLink');
+  const numberFormatLink = document.getElementById('numberFormatLink');
+
+  if (currentPage === 'index02.html') {
+    formatTextLink.style.display = 'none';
+  } else if (currentPage === 'number_format.html') {
+    numberFormatLink.style.display = 'none';
+  }
+}
+
+window.addEventListener('load', updateSidebar);
+
+// Adicionando event listeners para os botões
+document.getElementById('fileInput').addEventListener('change', handleFile);
+document.getElementById('numberEditor').addEventListener('input', handleManualInput);
 
 // Função para copiar o resultado para a área de transferência
 function copyToClipboard() {
