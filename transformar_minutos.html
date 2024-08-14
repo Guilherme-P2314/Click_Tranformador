@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformar Minutos</title>
+    <link rel="stylesheet" href="transformar_minutos.css">
+        <link rel="shortcut icon" href="imagem/favicon-32x32.png" type="image/x-icon">
+</head>
+<body>
+        <header>
+            <nav>
+                <button id="menu-button">☰</button>
+                <a href="index.html"><img src="imagem/logo_clickmassa_4x4-removebg-preview.png" alt="Logo Click Massa" width="100" height="80"></a>
+                <button class="theme-toggle" onclick="toggleTheme()">🌞</button>
+            </nav>
+        </header>
+    
+        <div id="sidebar" class="sidebar">
+            <button class="close-btn" id="closeBtn">&times;</button>
+            <a href="index.html" id="homeLink">Home</a>
+            <a href="number_format.html" id="numberFormatLink">Formatação de Números</a>
+            <a href="texto_format.html" id="formatTextLink">Formatador de Texto</a>
+            <a href="calculadora.html" id="calculatorLink">Calculadora</a>
+            <a href="#" id="backupLink">Baixar Backup</a>
+        </div>
+    
+        <div class="main-content">
+            <section class="service">
+                <h1>Transformar Minutos</h1>
+                <form id="minuteForm">
+                    <fieldset>
+                        <legend>Converter Tempo</legend>
+                        <label for="timeUnit">Escolha a unidade de tempo:</label>
+                        <select id="timeUnit" onchange="showInputField()">
+                            <option value="">Selecione</option>
+                            <option value="hours">Horas</option>
+                            <option value="days">Dias</option>
+                            <option value="weeks">Semanas</option>
+                            <option value="months">Meses</option>
+                            <option value="years">Anos</option>
+                        </select>
+                    </fieldset>
+        
+                    <div id="timeInputField" class="hidden">
+                        <label for="timeValue">Digite a quantidade:</label>
+                        <input type="number" id="timeValue" min="0"><br>
+                        <div class="action-buttons">
+                            <button type="button" onclick="convertTime()">Gerar</button>
+                            <button type="button" onclick="copyResult()">Copiar</button>
+                        </div>
+                    </div>
+                </form>
+        
+                <div class="output">
+                    <h2>Resultado:</h2>
+                    <pre id="convertedTime"></pre>
+                    <div class="action-buttons">
+                        <button type="button" onclick="clearResult()">Limpar Resultado</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <script src="transformar_minutos.js"></script>
+</body>
+</html>

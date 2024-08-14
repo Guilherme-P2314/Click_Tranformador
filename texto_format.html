@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formatador de Texto</title>
+    <link rel="stylesheet" href="texto_format.css">
+</head>
+<body class="light-mode">
+    <header>
+        <nav>
+            <button id="menu-button">☰</button>
+            <a href="index.html"><img src="imagem/logo_clickmassa_4x4-removebg-preview.png" alt="Logo Click Massa" width="100" height="80"></a>
+            <button class="theme-toggle" onclick="toggleTheme()">🌞</button>
+          </nav>
+    </header>
+
+    <div id="sidebar" class="sidebar">
+        <button class="close-btn" id="closeBtn">&times;</button>
+        <a href="index.html" id="homeLink">Home</a>
+        <a href="number_format.html" id="numberFormatLink">Formatação de Números</a>
+        <a href="transformar_minutos.html" id="transformMinutesLink">Transformar Minutos</a>
+        <a href="calculadora.html" id="calculatorLink">Calculadora</a>
+    </div>
+
+    <div class="main-content">
+        <section>
+            <h1>Formatador de Texto</h1>
+            <form id="textForm">
+                <fieldset id="step1">
+                    <legend>Etapa 1: Inserir Texto</legend>
+                    <textarea id="editor" placeholder="Digite seu texto aqui..."></textarea>
+                </fieldset>
+
+                <fieldset id="step2">
+                    <legend>Etapa 2: Escolher Formato</legend>
+                    <label for="formato">Escolha o formato:</label>
+                    <select id="formato" name="formato">
+                        <option value="maiuscula">MAIÚSCULA</option>
+                        <option value="minuscula">minúscula</option>
+                        <option value="capitalizar">Capitalizar</option>
+                        <option value="remover-espacos">Remover espaços</option>
+                    </select>
+                </fieldset>
+
+                <div class="action-buttons">
+                    <button type="button" onclick="transformText()">Transformar Texto</button>
+                </div>
+            </form>
+
+            <div class="output">
+                <h2>Resultado:</h2>
+                <pre id="outputText"></pre>
+            </div>
+        </section>
+    </div>
+
+    <script src="texto_format.js"></script>
+</body>
+</html>

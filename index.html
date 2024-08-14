@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formatador Univerção</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="imagem/favicon-32x32.png" type="image/x-icon">
+</head>
+<body class="light-mode">
+  <header>
+    <nav>
+      <!-- Botão de menu para abrir a barra lateral -->
+      <button id="menu-button">☰</button>
+      <!-- Logo da empresa -->
+      <a href="index.html"><img src="imagem/logo_clickmassa_4x4-removebg-preview.png" alt="Logo Click Massa" width="100" height="80"></a>
+      <!-- Botão de alternar tema -->
+      <button class="theme-toggle" onclick="toggleTheme()">🌞</button>
+    </nav>
+  </header>
+
+  <!-- Barra lateral de navegação -->
+  <div id="sidebar" class="sidebar">
+    <button class="close-btn" id="closeBtn">&times;</button>
+    <a href="index.html" id="homeLink">Home</a>
+    <a href="number_format.html" id="numberFormatLink">Formatação de Números</a>
+    <a href="texto_format.html" id="formatTextLink">Formatador de Texto</a>
+    <a href="transformar_minutos.html" id="transformMinutesLink">Transformar Minutos</a>
+    <a href="calculadora.html" id="calculatorLink">Calculadora</a>
+    <a href="#" id="backupLink">Baixar Backup</a>
+  </div>
+  
+  <main>
+    <div class="services-grid">
+        <section class="service" id="service1">
+            <h2>Formatador de Numeros</h2>
+            <p>Descrição do Serviço 1. Explicação sobre o que é oferecido e seus benefícios.</p>
+            <button id="uso" onclick="proximo1()">Usar agora</button>
+        </section>
+
+        <section class="service" id="service2">
+            <h2>Formatador de Texto</h2>
+            <p>Descrição do Serviço 2. Explicação sobre o que é oferecido e seus benefícios.</p>
+            <button id="uso" onclick="proximo2()">Usar agora</button>
+        </section>
+
+        <section class="service" id="service3">
+            <h2>Formatador de Tempo</h2>
+            <p>Formatador de texto. Com essa função pode pegar o seu texto que foi digitado em Maiusculo ou Minusculo e modificar auxiliando, e colocar vareavez.</p>
+            <button id="uso" onclick="proximo3()">Usar agora</button>
+        </section>
+
+        <section class="service" id="service4">
+            <h2>Calculadora</h2>
+            <p>Calculadora. Com essa função você pode calcular utilizando o básico da calculadora.</p>
+            <button id="uso" onclick="proximo4()">Usar agora</button>
+        </section>
+    </div>
+  </main>
+
+  <!-- Rodapé com links e mídias sociais -->
+  <footer>
+      <div class="footer-content">
+          <div class="social-media">
+              <a href="https://www.facebook.com/profile.php?id=100078927514843&mibextid=ZbWKwL">Facebook</a>
+              <a href="https://www.youtube.com/channel/UCaBhP1iyy-8XC27cfFe3gHg">Youtube</a>
+              <a href="https://www.instagram.com/clickmassaoficial?igsh=MWttbHlqdWsyMXl6Yw==">Instagram</a>
+          </div>
+      </div>
+      <p>© 2024 ClickMassa - Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+</html>

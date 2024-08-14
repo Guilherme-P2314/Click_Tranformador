@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formatação de Números</title>
+  <link rel="stylesheet" href="number_format.css" />
+  <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+  <link rel="shortcut icon" href="imagem/favicon-32x32.png" type="image/x-icon">
+</head>
+<body class="light-mode">
+  <header>
+    <nav>
+      <button id="menu-button">☰</button>
+      <a href="index.html"><img src="imagem/logo_clickmassa_4x4-removebg-preview.png" alt="Logo Click Massa" width="100" height="80"></a>
+      <button class="theme-toggle" onclick="toggleTheme()">🌞</button>
+    </nav>
+  </header>
+
+  <!-- Barra lateral de navegação -->
+  <div id="sidebar" class="sidebar">
+    <button class="close-btn" id="closeBtn">&times;</button>
+    <a href="index.html" id="homeLink">Home</a>
+    <a href="texto_format.html" id="formatTextLink">Formatador de Texto</a>
+    <a href="transformar_minutos.html" id="transformMinutesLink">Transformar Minutos</a>
+    <a href="calculadora.html" id="calculatorLink">Calculadora</a>
+    <a href="#" id="backupLink">Baixar Backup</a>
+  </div>
+
+  <div class="main-content">
+    <section>
+      <h1>Formatação de Números de Telefone</h1>
+      <form id="numberForm">
+        <fieldset id="step1">
+          <legend>Inserir Números</legend>
+          <label>
+            <input type="radio" name="inputMethod" value="manual" onclick="showNextStep('manual')"> Inserir Manualmente
+          </label>
+          <label>
+            <input type="radio" name="inputMethod" value="file" onclick="showNextStep('file')"> Carregar Arquivo XLSX
+          </label>
+        </fieldset>
+
+        <div id="manualInput" class="hidden">
+          <textarea id="numberEditor" placeholder="Digite os números aqui, um por linha..." oninput="handleManualInput()"></textarea>
+          <button type="button" onclick="clearManualInput()">Limpar Entrada Manual</button>
+        </div><br>
+
+        <div id="fileInputSection" class="hidden">
+          <label for="fileInput">Selecione um arquivo:</label>
+          <input type="file" id="fileInput" accept=".xlsx, .xls, .csv" onchange="handleFile(event)">
+        </div><br>
+
+        <fieldset id="step3" class="hidden">
+          <legend>Configurações de Exportação</legend>
+          <label for="columnSelect">Selecione a coluna com números de telefone:</label>
+          <select id="columnSelect" class="hidden"></select><br>
+          
+          <!-- Seção de filtro -->
+          <div id="filterSection" class="hidden">
+            <label for="filterInput">Filtrar por valor na coluna selecionada:</label>
+            <input type="text" id="filterInput" placeholder="Digite o valor para filtrar" oninput="applyFilter()">
+          </div><br>
+
+          <button type="button" onclick="formatPhoneNumber()">Formatar Número</button>
+        </fieldset>
+      </form>
+
+      <div class="output">
+        <div style="display: flex; align-items: center;">
+          <h2>Resultado:</h2>
+          <button id="menuResultButton" style="margin-left: 10px;">☰</button>
+        </div>
+        <p id="resultCount"></p>
+        <div id="resultTable"></div>
+      </div>
+
+      <div class="loading hidden" id="loading">Processando...</div>
+    </section>
+  </div>
+
+  <div id="sidebarResult" class="sidebar-result">
+    <p class="close-btn2" id="closeResultBtn">&#10006;&#65039;</p>
+    <button type="button" onclick="promptExportOptions()">Exportar</button>
+    <button type="button" onclick="copyToClipboard()">Copiar</button>
+    <button type="button" onclick="clearResult()">Limpar Resultado</button>
+  </div>
+  <script src="number_format.js"></script>
+  <footer></footer>
+</body>
+</html>

@@ -1,0 +1,432 @@
+:root {
+  --primary-color: #007bff;
+  --primary-hover-color: #0056b3;
+  --background-dark: #121212;
+  --background-light: #f8f9fa;
+  --text-dark: #0d5ae9e3;
+  --text-light: #212529;
+  --header-dark: #282828;
+  --header-light: #ffffff;
+}
+
+body.dark-mode {
+  --background-color: var(--background-dark);
+  --text-color: var(--text-dark);
+  --header-color: var(--header-dark);
+}
+
+body.light-mode {
+  --background-color: var(--background-light);
+  --text-color: var(--text-light);
+  --header-color: var(--header-light);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.8em;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--header-color);
+  color: var(--text-color);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  font-size: 1.5em;
+  transition: background-color 0.5s;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+}
+
+#menu-button {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.8em;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+#menu-button:hover {
+  transform: scale(1.1);
+}
+
+.sidebar {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1001;
+  top: 0;
+  left: -250px;
+  background-color: var(--header-color);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar a {
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 1.2em;
+  color: var(--text-color);
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  background-color: var(--primary-hover-color);
+  color: white;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  left: 180px;
+  font-size: 1.5em;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.main-content {
+  margin-top: 100px;
+  width: 100%;
+  max-width: 1000px;
+  padding: 20px;
+  transition: margin-left 0.5s;
+}
+
+section {
+  margin-top: 45px;
+  background-color: var(--header-color);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease;
+  transition: background-color 0.5s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2.5em;
+}
+
+fieldset {
+  border: none;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background: var(--header-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.5s;
+}
+
+legend {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+textarea, input, select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background: var(--header-color);
+  color: var(--text-color);
+  font-size: 1em;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 25px;
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  margin: 5px 0;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background-color: var(--primary-hover-color);
+  transform: scale(1.05);
+}
+
+.hidden {
+  display: none;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.2em;
+  color: #007bff;
+}
+
+.sidebar-result {
+  height: 100%;
+  width: 300px;
+  position: fixed;
+  z-index: 1001;
+  top: 0;
+  right: -300px;
+  background-color: var(--header-color);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar-result button {
+  padding: 10px;
+  margin: 10px;
+  width: 80%;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.sidebar-result button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.close-btn2 {
+  position: relative;
+  left: 0px;
+  font-size: 1.5em;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+
+/* Estilos para a calculadora */
+.calculator {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.calculator input {
+  grid-column: span 4;
+  height: 60px;
+  text-align: right;
+  padding-right: 15px;
+  font-size: 1.5em;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.calculator button {
+  height: 60px;
+  font-size: 1.5em;
+  border: none;
+  border-radius: 10px;
+  background-color: #ff5733;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Estilos específicos para botões de números */
+.calculator button.number {
+  background-color: #f1c40f;
+}
+
+.calculator button.number:hover {
+  background-color: #d4ac0d;
+}
+
+/* Estilos para botões de operação */
+.calculator button.operation {
+  background-color: #0d1c70;
+}
+
+.calculator button.operation:hover {
+  background-color: #0c1f8b;
+}
+
+/* Estilos para o botão de limpar */
+.calculator button.clear {
+  background-color: #e74c3c;
+}
+
+.calculator button.clear:hover {
+  background-color: #c0392b;
+}
+
+/* Estilos para o botão de deletar */
+.calculator button.delete {
+  background-color: #e67e22;
+}
+
+.calculator button.delete:hover {
+  background-color: #d35400;
+}
+
+/* Estilos para o botão de igual */
+.calculator button.equal {
+  background-color: #008cba;
+  grid-column: span 4;
+}
+
+.calculator button.equal:hover {
+  background-color: #006994;
+}
+
+/* Estilos para o histórico */
+.history {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: black;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.history h2 {
+  text-align: center;
+  font-size: 2em;
+}
+
+.history pre {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.2em;
+}
+
+.history .history-button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  margin-top: 10px;
+  background-color: #ff5733;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.history .history-button:hover {
+  background-color: #e04b28;
+  transform: scale(1.05);
+}
+
+/* Estilos para o tema claro e escuro */
+.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.dark-mode {
+  background-color: #333333;
+  color: #ffffff;
+}
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  header nav {
+    flex-direction: column;
+  }
+
+  header nav a, header nav button {
+    margin: 10px 0;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
+  section {
+    padding: 30px;
+  }
+
+  h1 {
+    font-size: 2.5em;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 480px) {
+  header nav a, header nav button {
+    margin: 5px 0;
+    font-size: 1em;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 1em;
+  }
+}

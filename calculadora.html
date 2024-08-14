@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="calculadora.css">
+    <link rel="shortcut icon" href="imagem/favicon-32x32.png" type="image/x-icon">
+</head>
+<body class="light-mode">
+    <!-- Cabeçalho com navegação -->
+    <header>
+        <nav>
+            <button id="menu-button">☰</button>
+            <a href="index.html"><img src="imagem/logo_clickmassa_4x4-removebg-preview.png" alt="Logo Click Massa" width="100" height="80"></a>
+            <button class="theme-toggle" onclick="toggleTheme()">🌞</button>
+        </nav>
+    </header>
+
+    <!-- Barra lateral de navegação -->
+    <div id="sidebar" class="sidebar">
+        <button class="close-btn" id="closeBtn">&times;</button>
+        <a href="index.html" id="homeLink">Home</a>
+        <a href="number_format.html" id="numberFormatLink">Formatação de Números</a>
+        <a href="texto_format.html" id="formatTextLink">Formatador de Texto</a>
+        <a href="transformar_minutos.html" id="transformMinutesLink">Transformar Minutos</a>
+        <a href="#" id="backupLink">Baixar Backup</a>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="main-content">
+        <section>
+            <h1>Calculadora</h1>
+            <div class="calculator">
+                <input type="text" id="display" disabled>
+                <!-- Botões da calculadora -->
+                <button class="clear" onclick="clearDisplay()">C</button>
+                <button class="delete" onclick="deleteLast()">DEL</button>
+                <button class="operation" onclick="appendToDisplay('(')">(</button>
+                <button class="operation" onclick="appendToDisplay(')')">)</button>
+                <button class="number" onclick="appendToDisplay('7')">7</button>
+                <button class="number" onclick="appendToDisplay('8')">8</button>
+                <button class="number" onclick="appendToDisplay('9')">9</button>
+                <button class="operation" onclick="appendToDisplay('/')">/</button>
+                <button class="number" onclick="appendToDisplay('4')">4</button>
+                <button class="number" onclick="appendToDisplay('5')">5</button>
+                <button class="number" onclick="appendToDisplay('6')">6</button>
+                <button class="operation" onclick="appendToDisplay('*')">*</button>
+                <button class="number" onclick="appendToDisplay('1')">1</button>
+                <button class="number" onclick="appendToDisplay('2')">2</button>
+                <button class="number" onclick="appendToDisplay('3')">3</button>
+                <button class="operation" onclick="appendToDisplay('-')">-</button>
+                <button class="number" onclick="appendToDisplay('0')">0</button>
+                <button class="operation" onclick="appendToDisplay('.')">.</button>
+                <button class="operation" onclick="appendToDisplay('%')">%</button>
+                <button class="operation" onclick="appendToDisplay('+')">+</button>
+                <button class="equal" onclick="calculate()">=</button>
+            </div>
+        </section>
+
+        <!-- Seção de histórico de cálculos -->
+        <section class="history hidden">
+            <h2>Histórico</h2>
+            <pre id="historyContent"></pre>
+            <button class="history-button" onclick="clearHistory()">Limpar Histórico</button>
+        </section>
+    </div>
+
+    <!-- Importação do script -->
+    <script src="calculadora.js"></script>
+</body>
+</html>
