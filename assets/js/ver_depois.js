@@ -234,3 +234,11 @@ document.getElementById('menu-button').addEventListener('click', function () {
 document.getElementById('closeBtn').addEventListener('click', function () {
     document.getElementById('sidebar').style.left = '-300px';
 });
+// Função para ativar link do menu
+const list = document.querySelectorAll('.list');
+function activelink() {
+  list.forEach((item) => item.classList.remove('active'));
+  this.classList.add('active');
+}
+
+list.forEach((item) => item.addEventListener('mouseover', activelink));

@@ -6,21 +6,24 @@ function toggleTheme() {
     body.classList.remove('light-mode');
     body.classList.add('dark-mode');
     themeToggle.textContent = '🌙';
+    localStorage.setItem('theme', 'dark-mode');
   } else {
     body.classList.remove('dark-mode');
     body.classList.add('light-mode');
     themeToggle.textContent = '🌞';
+    localStorage.setItem('theme', 'light-mode');
   }
 }
 
+// Variável para armazenar o histórico de cálculos
 let history = [];
 
-// Adiciona valores ao display
+// Adiciona valores ao display da calculadora
 function appendToDisplay(value) {
   document.getElementById('display').value += value;
 }
 
-// Limpa o display
+// Limpa o display da calculadora
 function clearDisplay() {
   document.getElementById('display').value = '';
 }
@@ -80,39 +83,26 @@ function loadHistory() {
   }
 }
 
-// Configura os eventos de abertura e fechamento do menu lateral
-window.onload = loadHistory;
-
-document.getElementById('menu-button').addEventListener('click', function () {
-  document.getElementById('sidebar').style.left = '0';
-});
-
-document.getElementById('closeBtn').addEventListener('click', function () {
-  document.getElementById('sidebar').style.left = '-300px';
-});
-function saveServiceInteraction(serviceId) {
-  let interactions = JSON.parse(localStorage.getItem('service-interactions')) || [];
-  interactions.push({ serviceId: serviceId, timestamp: new Date().toISOString() });
-  localStorage.setItem('service-interactions', JSON.stringify(interactions));
-}
-
-function loadSavedInteractions() {
-  const interactions = JSON.parse(localStorage.getItem('service-interactions')) || [];
-  interactions.forEach(interaction => {
-      const service = document.getElementById(interaction.serviceId);
-      if (service) {
-          service.style.border = '2px solid var(--primary-color)';
-      }
-  });
-
-  // Carrega o tema salvo
-  const savedTheme = localStorage.getItem('site-theme');
+// Carrega o histórico e o tema salvo ao carregar a página
+window.onload = function() {
+  loadHistory();
+  const savedTheme = localStorage.getItem('theme');
   if (savedTheme) {
-      document.body.classList.add(savedTheme);
+    document.body.classList.add(savedTheme);
+    const themeToggle = document.querySelector('.theme-toggle');
+    themeToggle.textContent = savedTheme === 'dark-mode' ? '🌙' : '🌞';
   }
+};
+
+
+// Função para marcar o link ativo no menu
+function activelink() {
+  const list = document.querySelectorAll('.list');
+  list.forEach((item) => item.classList.remove('active'));
+  this.classList.add('active');
 }
 
-function clearCache() {
-  localStorage.clear();
-  alert('O cache do navegador foi limpo!');
-}
+// Adiciona evento para ativar o link correspondente ao passar o mouse
+document.querySelectorAll('.list').forEach((item) =>
+  item.addEventListener('mouseover', activelink)
+);

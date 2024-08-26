@@ -4,23 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formatador de Texto</title>
-    <link rel="stylesheet" href="texto_format.css">
+    <link rel="stylesheet" href="./assets/css/texto_format.css">
+    <link
+    rel="shortcut icon"
+    href="imagem/favicon-32x32.png"
+    type="image/x-icon"
+  />
 </head>
 <body class="light-mode">
     <header>
         <nav>
-            <button id="menu-button">☰</button>
-            <a href="index.html"><img src="imagem/logo_clickmassa_4x4-removebg-preview.png" alt="Logo Click Massa" width="100" height="80"></a>
-            <button class="theme-toggle" onclick="toggleTheme()">🌞</button>
-          </nav>
+            <div class="nav-left"></div>
+            <a id="logo" href="index.html"><img src="imagem/logo_clickmassa_4x4-removebg-preview.png" alt="Logo Click Massa" width="100" height="80"></a>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()">💡</button>
+            </div>
+        </nav>
     </header>
 
-    <div id="sidebar" class="sidebar">
-        <button class="close-btn" id="closeBtn">&times;</button>
-        <a href="index.html" id="homeLink">Home</a>
-        <a href="number_format.html" id="numberFormatLink">Formatação de Números</a>
-        <a href="transformar_minutos.html" id="transformMinutesLink">Transformar Minutos</a>
-        <a href="calculadora.html" id="calculatorLink">Calculadora</a>
+    <div class="sidebar" id="sidebar">
+      <ul class="sidebar-menu">
+        <li class="list active">
+          <a href="index.html">
+            <span class="icon"><ion-icon name="home"></ion-icon></span>
+            <span class="title">HOME</span>
+          </a>
+        </li>
+        <li class="list">
+          <a href="number_format.html">
+            <span class="icon"><ion-icon name="calculator"></ion-icon></span>
+            <span class="title">Formatação de Números</span>
+          </a>
+        </li>
+        <li class="list">
+          <a href="transformar_minutos.html">
+            <span class="icon"><ion-icon name="time-outline"></ion-icon></span>
+            <span class="title">Transformar Minutos</span>
+          </a>
+        </li>
+        <li class="list">
+          <a href="calculadora.html">
+            <span class="icon"
+              ><ion-icon name="calculator-outline"></ion-icon
+            ></span>
+            <span class="title">Calculadora</span>
+          </a>
+        </li>
+      </ul>
     </div>
 
     <div class="main-content">
@@ -55,6 +85,8 @@
         </section>
     </div>
 
-    <script src="texto_format.js"></script>
+    <script src="./assets/js/texto_format.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

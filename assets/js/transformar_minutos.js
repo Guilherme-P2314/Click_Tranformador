@@ -67,18 +67,7 @@ function clearResult() {
   document.getElementById('timeInputField').classList.add('hidden');
 }
 
-document.getElementById('menu-button').addEventListener('click', function () {
-  document.getElementById('sidebar').style.left = '0';
-});
 
-document.getElementById('closeBtn').addEventListener('click', function () {
-  document.getElementById('sidebar').style.left = '-250px';
-});
-function saveServiceInteraction(serviceId) {
-  let interactions = JSON.parse(localStorage.getItem('service-interactions')) || [];
-  interactions.push({ serviceId: serviceId, timestamp: new Date().toISOString() });
-  localStorage.setItem('service-interactions', JSON.stringify(interactions));
-}
 
 function loadSavedInteractions() {
   const interactions = JSON.parse(localStorage.getItem('service-interactions')) || [];
@@ -100,3 +89,11 @@ function clearCache() {
   localStorage.clear();
   alert('O cache do navegador foi limpo!');
 }
+// Função para ativar link do menu
+const list = document.querySelectorAll('.list');
+function activelink() {
+  list.forEach((item) => item.classList.remove('active'));
+  this.classList.add('active');
+}
+
+list.forEach((item) => item.addEventListener('mouseover', activelink));

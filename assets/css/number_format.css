@@ -1,24 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
 :root {
   --primary-color: #007bff;
   --primary-hover-color: #0056b3;
   --background-dark: #121212;
   --background-light: #f8f9fa;
   --text-dark: #0d5ae9e3;
+  --text-dark2: #ffffffe3;
   --text-light: #212529;
+  --text-light2: #212529;
   --header-dark: #282828;
   --header-light: #ffffff;
+  --footer-background-dark: rgba(13, 28, 112, 0.8);
+  --footer-background-light: rgba(13, 28, 112, 0.8);
+  --footer-text-color: #ffffff;
 }
 
+/* Estilos para o modo escuro */
 body.dark-mode {
   --background-color: var(--background-dark);
   --text-color: var(--text-dark);
+  --text-color2: var(--text-dark2);
   --header-color: var(--header-dark);
+  --footer-background-color: var(--footer-background-dark);
 }
 
+/* Estilos para o modo claro */
 body.light-mode {
   --background-color: var(--background-light);
   --text-color: var(--text-light);
+  --text-color2: var(--text-light2);
   --header-color: var(--header-light);
+  --footer-background-color: var(--footer-background-light);
 }
 
 .theme-toggle {
@@ -48,14 +61,14 @@ body, html {
 }
 
 header {
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 25px;
   background-color: var(--header-color);
   color: var(--text-color);
   width: 100%;
-  position: fixed;
   top: 0;
   z-index: 1000;
   font-size: 1.5em;
@@ -65,60 +78,88 @@ header {
 header nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-#menu-button {
-  background: none;
-  border: none;
-  color: var(--text-color);
-  font-size: 1.8em;
-  cursor: pointer;
-  transition: transform 0.3s;
+.nav-left, .nav-right {
+  flex: 1;
 }
 
-#menu-button:hover {
-  transform: scale(1.1);
+#logo {
+  flex: 2;
 }
 
+/* Estilos para a barra lateral */
 .sidebar {
-  height: 100%;
-  width: 250px;
   position: fixed;
-  z-index: 1001;
+  height: 100%;
+  width: 75px;
   top: 0;
-  left: -250px;
+  left: 0;
   background-color: var(--header-color);
+  color: var(--background-dark);
+  box-shadow: 10px 0 0 var(--primary-hover-color);
   overflow-x: hidden;
-  transition: 0.5s;
+  transition: width 0.5s, z-index 0.5s;
+  z-index: 1100;
   padding-top: 60px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  font-family: "Kanit", sans-serif;
+  font-weight: 300;
 }
 
-.sidebar a {
-  padding: 10px 15px;
+.sidebar:hover {
+  width: 250px;
+}
+
+/* Menu da barra lateral */
+.sidebar-menu {
+  padding-top: 20px;
+  padding-left: 10px;
+}
+
+.sidebar-menu li {
+  margin-top: 10px;
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.sidebar-menu li a {
+  display: flex;
+  width: 100%;
+  color: var(--text-color2);;
   text-decoration: none;
-  font-size: 1.2em;
-  color: var(--text-color);
-  display: block;
-  transition: 0.3s;
 }
 
-.sidebar a:hover {
+.sidebar-menu li a .icon {
+  min-width: 60px;
+  text-align: center;
+  line-height: 70px;
+  margin-left: 2px;
+}
+
+.sidebar-menu li a .title {
+  padding-left: 10px;
+  height: 60px;
+  line-height: 60px;
+  white-space: nowrap;
+}
+
+.sidebar-menu li.active {
+  background: var(--primary-hover-color);
+}
+
+.sidebar-menu li.hover-active {
   background-color: var(--primary-hover-color);
-  color: white;
 }
 
-.close-btn {
-  position: absolute;
-  top: 20px;
-  left: 180px;
-  font-size: 1.5em;
-  background: none;
-  border: none;
-  color: var(--text-color);
-  cursor: pointer;
+.content {
+  margin-left: 250px;
+  padding: 20px;
 }
 
 .main-content {
@@ -219,26 +260,74 @@ button:hover {
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }
 
-.sidebar-result button {
-  padding: 10px;
-  margin: 10px;
-  width: 80%;
-  border: none;
-  background-color: #007bff;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1em;
-  transition: background-color 0.3s, transform 0.3s;
+/* Estilos para a barra lateral */
+.sidebar {
+  position: fixed;
+  height: 100%;
+  width: 75px;
+  top: 0;
+  left: 0;
+  background-color: var(--header-color);
+  color: var(--background-dark);
+  box-shadow: 10px 0 0 var(--primary-hover-color);
+  overflow-x: hidden;
+  transition: width 0.5s, z-index 0.5s;
+  z-index: 1100;
+  padding-top: 60px;
+  font-family: "Kanit", sans-serif;
+  font-weight: 300;
 }
 
-.sidebar-result button:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
+.sidebar:hover {
+  width: 270px;
 }
+
+.sidebar-menu {
+  padding-top: 20px;
+  padding-left: 10px;
+}
+
+.sidebar-menu li {
+  margin-top: 10px;
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.sidebar-menu li a {
+  display: flex;
+  width: 100%;
+  color: var(--text-color2);
+  text-decoration: none;
+}
+
+.sidebar-menu li a .icon {
+  min-width: 60px;
+  text-align: center;
+  line-height: 70px;
+  margin-left: 2px;
+}
+
+.sidebar-menu li a .title {
+  padding-left: 10px;
+  height: 60px;
+  line-height: 60px;
+  white-space: nowrap;
+}
+
+.sidebar-menu li.active {
+  background: var(--primary-hover-color);
+}
+
+.content {
+  margin-left: 250px;
+  padding: 20px;
+}
+
 
 .close-btn2 {
   position: relative;
