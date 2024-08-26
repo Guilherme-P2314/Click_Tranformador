@@ -7,11 +7,11 @@ function toggleTheme() {
   if (body.classList.contains('light-mode')) {
       body.classList.remove('light-mode');
       body.classList.add('dark-mode');
-      themeToggle.textContent = '🌙'; // Atualiza o ícone para lua
+      themeToggle.textContent = '🕳️'; // Atualiza o ícone para lua
   } else {
       body.classList.remove('dark-mode');
       body.classList.add('light-mode');
-      themeToggle.textContent = '🌞'; // Atualiza o ícone para sol
+      themeToggle.textContent = '💡'; // Atualiza o ícone para sol
   }
   // A mudança de tema altera as variáveis de CSS que controlam cores e estilos
 }

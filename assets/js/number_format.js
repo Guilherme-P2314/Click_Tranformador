@@ -5,11 +5,11 @@ function toggleTheme() {
   if (body.classList.contains('light-mode')) {
       body.classList.remove('light-mode');
       body.classList.add('dark-mode');
-      themeToggle.textContent = '🌙';
+      themeToggle.textContent = '🕳️';
   } else {
       body.classList.remove('dark-mode');
       body.classList.add('light-mode');
-      themeToggle.textContent = '🌞';
+      themeToggle.textContent = '💡';
   }
   // Atualiza os estilos para refletir a mudança de tema
 }
