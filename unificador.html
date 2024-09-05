@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formatador Univerção</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="shortcut icon" href="imagem/favicon.ico" type="image/x-icon">
+    <title>Unificar Planilhas Excel</title>
+    <link rel="stylesheet" href="./assets/css/unificador.css" />
   </head>
   <body class="light-mode">
     <header>
       <nav>
-        <div class="nav-left"></div>
-        <!-- Logo da empresa -->
         <a id="logo" href="index.html">
           <img
             src="imagem/logo_clickmassa_4x4-removebg-preview.png"
@@ -20,8 +18,7 @@
             height="80"
           />
         </a>
-        <div class="nav-right">
-          <!-- Botão de alternar tema -->
+        <div id="mod">
           <button class="theme-toggle" onclick="toggleTheme()">💡</button>
         </div>
       </nav>
@@ -48,12 +45,6 @@
           </a>
         </li>
         <li class="list">
-          <a href="transformar_minutos.html">
-            <span class="icon"><ion-icon name="time-outline"></ion-icon></span>
-            <span class="title">Transformar Minutos</span>
-          </a>
-        </li>
-        <li class="list">
           <a href="calculadora.html">
             <span class="icon"
               ><ion-icon name="calculator-outline"></ion-icon
@@ -61,51 +52,14 @@
             <span class="title">Calculadora</span>
           </a>
         </li>
-        <li class="list">
-          <a href="unificador.html">
-            <span class="icon"
-              ><ion-icon name="add-outline"></ion-icon></span>
-            <span class="title">Unificador de Arquivos</span>
-          </a>
-        </li>
       </ul>
     </div>
 
     <main>
-      <div class="services-grid">
-        <section class="service" id="service1">
-          <h2>Formatador de Numeros</h2>
-          <p>
-            Formatador de Numeros. Com essa função pode ser editado os numeros já deixando nos padrões para subir em outras plataformas, onde edita o contato remove caracteres especias, tem a exportação e copia, e a função de separa por arquivos dependendo da quantidade de linhas.
-          </p>
-          <button id="uso" onclick="proximo1()">Usar agora</button>
-        </section>
-
-        <section class="service" id="service2">
-          <h2>Formatador de Texto</h2>
-          <p>Formatador de Texto. Formata.</p>
-          <button id="uso" onclick="proximo2()">Usar agora</button>
-        </section>
-
-        <section class="service" id="service3">
-          <h2>Formatador de Tempo</h2>
-          <p>
-            Formatador de texto. Com essa função pode pegar o seu texto que foi
-            digitado em Maiusculo ou Minusculo e modificar auxiliando, e colocar
-            vareavez.
-          </p>
-          <button id="uso" onclick="proximo3()">Usar agora</button>
-        </section>
-
-        <section class="service" id="service4">
-          <h2>Calculadora</h2>
-          <p>
-            Calculadora. Com essa função você pode calcular utilizando o básico
-            da calculadora.
-          </p>
-          <button id="uso" onclick="proximo4()">Usar agora</button>
-        </section>
-      </div>
+      <h1>Unificar Planilhas Excel</h1>
+      <input type="file" id="upload" accept=".xlsx, .xls" multiple />
+      <button id="export" style="display: none">Exportar Unificado</button>
+      <table id="output-table"></table>
     </main>
 
     <!-- Rodapé com links e mídias sociais -->
@@ -146,14 +100,9 @@
       </div>
       <p>© 2024 ClickMassa - Todos os direitos reservados.</p>
     </footer>
-    <script src="./assets/js/script.js"></script>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
+
+    <!-- Include SheetJS Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="./assets/js/unificador.js"></script>
   </body>
 </html>
